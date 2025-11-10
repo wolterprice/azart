@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZART Racing — Азартные Райдеры | Экстрим, драйв и движение</title>
+    
+    <!-- 🧠 SEO -->
+    <meta name="description" content="AZART Racing — сообщество экстремалов и райдеров, которые живут скоростью и движением. Опасные трюки, драйв и Telegram-сообщество для тех, кто на грани.">
+    <meta name="keywords" content="azart, azart racing, азарт, азартные райдеры, экстремалы, экстрим, дрифт, драйв, опасное вождение, трюки, движение">
+    <meta name="author" content="AZART Racing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://azart.online/">
+
+    <!-- 🧭 Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://azart.online/">
+    <meta property="og:title" content="AZART Racing — Азартные Райдеры">
+    <meta property="og:description" content="Сообщество азартных райдеров. Скорость, опасные трюки и экстрим. Присоединяйся к движению!">
+    <meta property="og:image" content="https://azart.online/images/win.webp">
+
+    <!-- 🐦 Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://azart.online/">
+    <meta property="twitter:title" content="AZART Racing — Азартные Райдеры">
+    <meta property="twitter:description" content="Сообщество экстремалов, райдеров и драйва.">
+    <meta property="twitter:image" content="https://azart.online/images/win.webp">
+
+    <!-- 💬 Telegram -->
+    <meta property="telegram:channel" content="@AZARTRACING">
+
+    <!-- ⚙️ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AZART Racing",
+      "url": "https://azart.online/",
+      "logo": "https://azart.online/images/win.webp",
+      "sameAs": ["https://t.me/AZARTRACING"],
+      "description": "Сообщество экстремалов и райдеров, объединённых движением, драйвом и скоростью."
+    }
+    </script>
+
+    <!-- 🔤 Fonts and Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- 🅰️ Fonts -->
+    <link rel="preload" href="fonts/beroda-regular.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="images/win.webp" as="image">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- 🧩 Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
+
+
+
+    <style>
+        @font-face {
+            font-family: 'Beroda';
+            src: url('fonts/beroda-regular.woff') format('woff');
+            font-display: swap;
+        }
+
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1b1f22;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Фоновая анимация */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at top, rgba(41,128,185,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom, rgba(142,68,173,0.15) 0%, transparent 60%);
+            animation: pulse 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes pulse {0%,100%{opacity:.5;}50%{opacity:1;}}
+
+        /* Частицы */
+        .particles {position: fixed; inset: 0; overflow: hidden; z-index: 1; pointer-events: none;}
+        .particle {
+            position: absolute;
+            bottom: -5px; /* звёзды стартуют чуть ниже экрана */
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float linear infinite;
+            will-change: transform, opacity;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(var(--drift, 0px));
+                opacity: 0;
+            }
+        }
+
+
+        /* Основной контейнер */
+        #wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            z-index: 2;
+        }
+
+        /* Логотип */
+        .logo-container {margin-bottom: 2rem; animation: fadeInDown 1s ease-out;}
+        .logo-animation {
+            width: clamp(200px, 40vw, 400px);
+            height: auto;
+            filter: drop-shadow(0 0 7px rgba(41,128,185,0.6));
+            image-rendering: crisp-edges;
+        }
+
+        @keyframes fadeInDown {from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);}}
+        @keyframes fadeInUp {from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);}}
+        @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
+
+        /* Заголовок */
+        h1 {
+            font-family: 'Beroda', sans-serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(102,126,234,0.5);
+            letter-spacing: 0.3rem;
+            text-align: center;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: clamp(1rem,3vw,1.5rem);
+            letter-spacing: 0.2rem;
+            text-transform: lowercase;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        /* Кнопка Telegram */
+        .button-container {margin-top: 3rem; animation: fadeInUp 1.5s ease-out 0.6s both;}
+        .telegram-button {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            color: #fff; text-decoration: none; font-weight: 700;
+            border-radius: 50px; padding: 1rem 2rem;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+            transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .telegram-button::before {
+            content: ''; position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
+            transition: left 0.5s ease;
+        }
+        .telegram-button:hover::before {left: 100%;}
+        .telegram-button:hover {transform: translateY(-3px); box-shadow: 0 15px 40px rgba(102,126,234,0.5);}
+        .telegram-icon {width: 24px; height: 24px;}
+
+        /* Футер */
+        footer {
+            position: fixed; bottom: 1.5rem; width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        @media (max-width: 768px) {
+            .logo-animation {width: clamp(180px, 50vw, 300px);}
+            .telegram-button {padding: 0.9rem 1.8rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div id="wrapper">
+        <div class="logo-container">
+            <img src="images/win.webp" 
+                 alt="AZART Racing — азартные райдеры и экстрим" 
+                 class="logo-animation"
+                 width="400" height="400"
+                 loading="eager" decoding="async">
+        </div>
+
+        <header>
+            <h1>AZART</h1>
+            <p class="subtitle">soon</p>
+        </header>
+
+        <div class="button-container">
+            <a href="https://t.me/AZARTRACING" class="telegram-button" target="_blank" rel="noopener noreferrer">
+                <svg class="telegram-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                </svg>
+                Telegram
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 AZART.  All rights reserved.
+    </footer>
+
+    <script>
+        const particlesContainer = document.getElementById('particles');
+
+            // Количество звёзд в зависимости от ширины экрана
+            const particleCount =
+                window.innerWidth < 600 ? 25 :
+                window.innerWidth < 1024 ? 40 :
+                60;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Случайное положение по горизонтали
+            particle.style.left = Math.random() * 100 + '%';
+            
+            // Разное время полёта и задержка для естественности
+            particle.style.animationDuration = 10 + Math.random() * 15 + 's';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            
+            // Лёгкий дрейф по оси X (влево/вправо)
+            particle.style.setProperty('--drift', (Math.random() - 0.5) * 100 + 'px');
+            
+            particlesContainer.appendChild(particle);
+        }
+
+    </script>
+</body>
+</html>

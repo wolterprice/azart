@@ -1,0 +1,9 @@
+# robots.txt для сайта AZART Racing
+User-agent: *
+Allow: /
+
+# Указываем адрес карты сайта
+Sitemap: https://azart.online/sitemap.xml
+
+# Дополнительные указания для поисковиков
+Host: azart.online
